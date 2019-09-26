@@ -1,9 +1,11 @@
 import 'package:hackatools/api/api_response.dart';
 import 'package:hackatools/database/entities/usuario.dart';
-import 'package:hackatools/pages/bloc/login_bloc.dart';
+import 'package:hackatools/pages/login/login_bloc.dart';
+import 'package:hackatools/pages/times/times_body.dart';
 import 'package:hackatools/pages/times/times_page.dart';
 import 'package:hackatools/utils/nav.dart';
 import 'package:hackatools/widgets/alert.dart';
+import 'package:hackatools/pages/app_bar.dart';
 import 'package:hackatools/widgets/app_button.dart';
 import 'package:hackatools/widgets/app_text.dart';
 import 'package:flutter/material.dart';
@@ -100,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
     ApiResponse<Usuario> response = await _bloc.login(login, senha);
 
     if (response.ok) {
-      push(context, TimesPage(), replace: true);
+      push(context, MainAppBar(body: TimesBody()), replace: true);
     } else {
       alert(context, response.msg);
     }

@@ -1,11 +1,17 @@
 import 'dart:convert';
+import 'package:hackatools/api/mocks/mock.dart';
 import 'package:hackatools/database/entities/usuario.dart';
 import 'package:http/http.dart' as http;
 
 import 'api_response.dart';
 
 class LoginApi {
-  static Future<ApiResponse<Usuario>> login(String email, String matricula) async {
+  static Future<ApiResponse<Usuario>> login(String email, String matricula, {bool mock = true}) async {
+    
+    if(mock){
+      return Mocks.MockLoginResponse();
+    }
+    
     try {
       var url = 'https://hackatools-api.herokuapp.com/v1/usuarios/usuario/login';
 

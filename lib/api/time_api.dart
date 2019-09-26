@@ -1,11 +1,15 @@
 import 'dart:convert' as convert;
+import 'package:hackatools/api/mocks/mock.dart';
 import 'package:hackatools/database/entities/time.dart';
 import 'package:hackatools/utils/http_helper.dart' as http;
 
 import 'api_response.dart';
 
 class TimeApi {
-  static Future<List<Time>> getTimes() async {
+  static Future<List<Time>> getTimes({bool mock = true}) async {
+    if(mock){
+      return Mocks.MockGetTimes();
+    }
     var url =
         'https://hackatools-api.herokuapp.com/v1/times/';
 
@@ -62,27 +66,4 @@ class TimeApi {
     }
   }
 
-  // static Future<ApiResponse<bool>> delete(Time c) async {
-  //   try {
-
-  //     var url = 'https://hackatools-api.herokuapp.com/v1/times/time/${c.id}';
-
-  //     print("DELETE > $url");
-
-  //     var response = await http.delete(url);
-
-  //     print('Response status: ${response.statusCode}');
-  //     print('Response body: ${response.body}');
-
-  //     if (response.statusCode == 200) {
-  //       return ApiResponse.ok(true);
-  //     }
-
-  //     return ApiResponse.error("Não foi possível deletar o time");
-  //   } catch (e) {
-  //     print(e);
-
-  //     return ApiResponse.error("Não foi possível deletar o time");
-  //   }
-  // }
 }

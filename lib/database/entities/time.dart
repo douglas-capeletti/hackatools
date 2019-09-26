@@ -8,7 +8,7 @@ class Time extends Entity {
   String cor;
   String proposta;
   String adminToken;
-  List<Participantes> participantes;
+  List<Participante> participantes;
 
   Time(
       {this.id,
@@ -25,9 +25,9 @@ class Time extends Entity {
     proposta = json['proposta'];
     adminToken = json['adminToken'];
     if (json['participantes'] != null) {
-      participantes = new List<Participantes>();
+      participantes = new List<Participante>();
       json['participantes'].forEach((v) {
-        participantes.add(new Participantes.fromJson(v));
+        participantes.add(new Participante.fromJson(v));
       });
     }
   }
@@ -57,13 +57,13 @@ class Time extends Entity {
   }
 }
 
-class Participantes {
+class Participante {
   String nome;
   String curso;
 
-  Participantes({this.nome, this.curso});
+  Participante({this.nome, this.curso});
 
-  Participantes.fromJson(Map<String, dynamic> json) {
+  Participante.fromJson(Map<String, dynamic> json) {
     nome = json['nome'];
     curso = json['curso'];
   }

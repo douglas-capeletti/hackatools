@@ -1,4 +1,5 @@
 import 'package:hackatools/pages/login/login_page.dart';
+import 'package:hackatools/pages/times/times_body.dart';
 import 'package:hackatools/pages/user/user_page.dart';
 import 'package:hackatools/utils/nav.dart';
 import 'package:flutter/material.dart';
@@ -20,21 +21,13 @@ class _TimesPageState extends State<TimesPage>
     return Scaffold(
       appBar: AppBar(
         title: Text("HackaTools"),
-        // actions: <Widget>[
-        //   IconButton(icon: Icon(Icons.exit_to_app), onPressed: () {
-        //     push(context, LoginPage());
-        //   },)
-        // ],
+         actions: <Widget>[
+           IconButton(icon: Icon(Icons.exit_to_app), onPressed: () {
+             push(context, LoginPage());
+           },)
+         ],
       ),
-      body: TimesPage(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: _onClickfab,
-      ),
+      body: TimesBody(),
     );
-  }
-
-  void _onClickfab() {
-    push(context, UserInfo());
   }
 }

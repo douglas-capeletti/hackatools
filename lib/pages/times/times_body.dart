@@ -1,23 +1,18 @@
 import 'package:hackatools/database/entities/time.dart';
-import 'package:hackatools/pages/bloc/times_bloc.dart';
+import 'package:hackatools/pages/times/times_bloc.dart';
 import 'package:hackatools/pages/times/times_listview.dart';
 import 'package:hackatools/widgets/text_error.dart';
 import 'package:flutter/material.dart';
 
-class TimesPage extends StatefulWidget {
-  String status;
-
-  TimesPage({this.status = "OK"});
+class TimesBody extends StatefulWidget {
 
   @override
-  _TimesPageState createState() => _TimesPageState();
+  _TimesBodyState createState() => _TimesBodyState();
 }
 
-class _TimesPageState extends State<TimesPage> with AutomaticKeepAliveClientMixin<TimesPage> {
+class _TimesBodyState extends State<TimesBody> with AutomaticKeepAliveClientMixin<TimesBody> {
   
   List<Time> times;
-
-  String get tipo => widget.status;
 
   final _bloc = TimesBloc();
 
@@ -48,11 +43,9 @@ class _TimesPageState extends State<TimesPage> with AutomaticKeepAliveClientMixi
           );
         }
 
-        List<Time> times = snapshot.data;
-
         return RefreshIndicator(
           onRefresh: _onRefresh,
-          child: TimesListView(times),
+          child: TimesListView(snapshot.data),
         );
       },
     );

@@ -1,11 +1,12 @@
 import 'package:hackatools/database/entities/usuario.dart';
 import 'package:hackatools/pages/login/login_page.dart';
+import 'package:hackatools/pages/times/times_body.dart';
 import 'package:hackatools/pages/times/times_page.dart';
 import 'package:hackatools/utils/db_helper.dart';
 import 'package:hackatools/utils/nav.dart';
 import 'package:flutter/material.dart';
+import 'package:hackatools/pages/app_bar.dart';
 
-// Inserir icone no splash screen
 class SplashPage extends StatefulWidget {
   @override
   _SplashPageState createState() => _SplashPageState();
@@ -18,8 +19,7 @@ class _SplashPageState extends State<SplashPage> {
     // Inicializar o banco de dados
     Future futureA = DatabaseHelper.getInstance().db;
 
-    // Avalir se necessario ou não
-    Future futureB = Future.delayed(Duration(seconds: 3));
+    Future futureB = Future.delayed(Duration(milliseconds: 1500));
 
     Future<Usuario> futureC = Usuario.get();
 
@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
       print(user);
 
       if (user != null) {
-        push(context, TimesPage(), replace: true);
+        push(context, MainAppBar(body: TimesBody()), replace: true);
       } else {
         push(context, LoginPage(), replace: true);
       }
