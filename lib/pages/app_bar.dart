@@ -9,8 +9,9 @@ class MainAppBar extends StatefulWidget {
 
   final String title;
   final Widget body;
+  final Widget actions;
 
-  MainAppBar({Key key, @required this.body, this.title = "HackaTools"}) : super(key: key);
+  MainAppBar({Key key, @required this.body, @required this.actions, this.title = "HackaTools"}) : super(key: key);
 
   @override
   _MainAppBarState createState() => new _MainAppBarState();
@@ -30,43 +31,20 @@ class _MainAppBarState extends State<MainAppBar> with TickerProviderStateMixin {
         color: Colors.grey,
         selectedColor: Colors.red,
         notchedShape: CircularNotchedRectangle(),
-        onTabSelected: (value) => _selectedTab(context, value),
+        onTabSelected: _selectedTab,
         items: [
           FABBottomAppBarItem(iconData: Icons.today, text: 'Agenda'),
-          FABBottomAppBarItem(iconData: Icons.local_play, text: 'Assunto'),
-          FABBottomAppBarItem(iconData: Icons.account_box, text: 'Conta'),
-          FABBottomAppBarItem(iconData: Icons.exit_to_app, text: 'Sair'),
+          FABBottomAppBarItem(iconData: Icons.local_play, text: 'Tema'),
+          FABBottomAppBarItem(iconData: Icons.accessibility, text: 'Ajuda'),
+          FABBottomAppBarItem(iconData: Icons.mail, text: 'Mensagens'),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _buildFab(
-          context), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: widget.actions
     );
   }
 
-  Widget _buildFab(BuildContext context) {
-    final icons = [ Icons.sms, Icons.mail, Icons.phone ];
-    return AnchoredOverlay(
-      showOverlay: true,
-      overlayBuilder: (context, offset) {
-        return CenterAbout(
-          position: Offset(offset.dx, offset.dy - icons.length * 35.0),
-          child: FabWithIcons(
-            icons: icons,
-            onIconTapped: _selectedFab,
-          ),
-        );
-      },
-      child: FloatingActionButton(
-        onPressed: () { },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-        elevation: 2.0,
-      ),
-    );
-  }
-
-  void _selectedTab(context, index) {
+  void _selectedTab(index) {
     switch(index){
       case 0: push(context, UserInfo(), replace: true);
         break;
