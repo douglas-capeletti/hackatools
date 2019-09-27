@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
     ApiResponse<Usuario> response = await _bloc.login(login, senha);
 
     if (response.ok) {
-      push(context, MainAppBar(body: TimesBody()), replace: true);
+      push(context, TimesPage(), replace: true);
     } else {
       alert(context, response.msg);
     }

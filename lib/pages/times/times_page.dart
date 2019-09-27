@@ -18,7 +18,7 @@ class _TimesPageState extends State<TimesPage>
 
   @override
   Widget build(BuildContext context) {
-    return MainAppBar(body: TimesBody(), actions: _buildFab(context),);
+    return MainAppBar(body: TimesBody());
   }
 
   Widget _buildFab(BuildContext context) {

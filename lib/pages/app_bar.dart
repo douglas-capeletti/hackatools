@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hackatools/pages/user/user_page.dart';
 import 'package:hackatools/utils/nav.dart';
 import 'package:hackatools/widgets/fab_bottom_app_bar.dart';
-import 'package:hackatools/widgets/fab_with_icons.dart';
-import 'package:hackatools/widgets/layout.dart';
 
 class MainAppBar extends StatefulWidget {
 
@@ -11,14 +9,13 @@ class MainAppBar extends StatefulWidget {
   final Widget body;
   final Widget actions;
 
-  MainAppBar({Key key, @required this.body, @required this.actions, this.title = "HackaTools"}) : super(key: key);
+  MainAppBar({Key key, @required this.body, this.actions, this.title = "HackaTools"}) : super(key: key);
 
   @override
   _MainAppBarState createState() => new _MainAppBarState();
 }
 
 class _MainAppBarState extends State<MainAppBar> with TickerProviderStateMixin {
-  int _lastSelected = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +33,11 @@ class _MainAppBarState extends State<MainAppBar> with TickerProviderStateMixin {
           FABBottomAppBarItem(iconData: Icons.today, text: 'Agenda'),
           FABBottomAppBarItem(iconData: Icons.local_play, text: 'Tema'),
           FABBottomAppBarItem(iconData: Icons.accessibility, text: 'Ajuda'),
-          FABBottomAppBarItem(iconData: Icons.mail, text: 'Mensagens'),
+          FABBottomAppBarItem(iconData: Icons.mail, text: 'Msgs'),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: widget.actions
+      floatingActionButton: widget.actions ?? _defaultFab()
     );
   }
 
@@ -57,10 +54,13 @@ class _MainAppBarState extends State<MainAppBar> with TickerProviderStateMixin {
     }
   }
 
-  void _selectedFab(int index) {
-    setState(() {
-      _lastSelected = index;
-    });
+  Widget _defaultFab(){
+    return FloatingActionButton(
+      onPressed: () => setState(() {
+      }),
+      backgroundColor: Colors.grey,
+      child: Icon(Icons.lock),
+    );
   }
 
 }
