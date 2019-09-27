@@ -1,5 +1,6 @@
 import 'dart:convert' as convert;
 
+import 'package:hackatools/api/mocks/mock.dart';
 import 'package:hackatools/utils/prefs.dart';
 
 class Usuario {
@@ -55,6 +56,7 @@ class Usuario {
   }
 
   static Future<Usuario> get() async {
+    return Future.value(Mocks.MockUsuario());
     String json = await Prefs.getString("user.prefs");
     if(json.isEmpty) {
       return null;

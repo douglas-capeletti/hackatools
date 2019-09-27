@@ -4,14 +4,18 @@ import 'package:hackatools/database/entities/usuario.dart';
 
 class Mocks {
   static Future<ApiResponse<Usuario>> MockLoginResponse() {
-    return Future.value(ApiResponse.ok(Usuario(
+    return Future.value(ApiResponse.ok(MockUsuario()));
+  }
+
+  static Usuario MockUsuario(){
+    return Usuario(
         id: 1,
         nome: "Douglas",
         email: "douglas.drpaz@gmail.com",
         matricula: 17103446,
         curso: "ES",
         token: "DOUGLAS|PAZ",
-        role: "PARTICIPANTE")));
+        role: "PARTICIPANTE");
   }
 
   static Future<List<Time>> MockGetTimes() {

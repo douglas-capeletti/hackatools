@@ -6,7 +6,7 @@ import 'package:hackatools/utils/http_helper.dart' as http;
 import 'api_response.dart';
 
 class TimeApi {
-  static Future<List<Time>> getTimes({bool mock = true}) async {
+  static Future<List<Time>> getTimes({Time created, bool mock = true}) async {
     if(mock){
       return Mocks.MockGetTimes();
     }
