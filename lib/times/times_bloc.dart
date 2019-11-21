@@ -1,9 +1,9 @@
 
 import 'dart:async';
-import 'package:hackatools/api/time_api.dart';
+
+
 import 'package:hackatools/database/entities/time.dart';
-import 'package:hackatools/database/time_dao.dart';
-import 'package:hackatools/utils/network.dart';
+import 'package:hackatools/times/time_api.dart';
 
 class TimesBloc {
 

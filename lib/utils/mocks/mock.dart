@@ -1,4 +1,4 @@
-import 'package:hackatools/api/api_response.dart';
+import 'package:hackatools/utils/api_response.dart';
 import 'package:hackatools/database/entities/time.dart';
 import 'package:hackatools/database/entities/usuario.dart';
 

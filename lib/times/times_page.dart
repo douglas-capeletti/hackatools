@@ -1,8 +1,7 @@
-import 'package:hackatools/pages/login/login_page.dart';
-import 'package:hackatools/pages/times/times_body.dart';
-import 'package:hackatools/pages/user/user_page.dart';
-import 'package:hackatools/utils/nav.dart';
 import 'package:flutter/material.dart';
+import 'package:hackatools/login/login_page.dart';
+import 'package:hackatools/times/times_body.dart';
+import 'package:hackatools/utils/nav.dart';
 
 class TimesPage extends StatefulWidget {
   @override

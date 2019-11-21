@@ -1,8 +1,8 @@
-import 'package:hackatools/database/entities/time.dart';
-import 'package:hackatools/pages/times/times_bloc.dart';
-import 'package:hackatools/pages/times/times_listview.dart';
-import 'package:hackatools/widgets/text_error.dart';
 import 'package:flutter/material.dart';
+import 'package:hackatools/database/entities/time.dart';
+import 'package:hackatools/times/times_bloc.dart';
+import 'package:hackatools/times/times_listview.dart';
+import 'package:hackatools/widgets/text_error.dart';
 
 class TimesBody extends StatefulWidget {
 
@@ -11,7 +11,7 @@ class TimesBody extends StatefulWidget {
 }
 
 class _TimesBodyState extends State<TimesBody> with AutomaticKeepAliveClientMixin<TimesBody> {
-  
+
   List<Time> times;
 
   final _bloc = TimesBloc();

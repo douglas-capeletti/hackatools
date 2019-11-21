@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackatools/pages/user/user_page.dart';
+import 'package:hackatools/user/user_page.dart';
 import 'package:hackatools/utils/nav.dart';
 import 'package:hackatools/widgets/fab_bottom_app_bar.dart';
 import 'package:hackatools/widgets/fab_with_icons.dart';
@@ -26,16 +26,16 @@ class _MainAppBarState extends State<MainAppBar> with TickerProviderStateMixin {
         title: Text(widget.title),
       ),
       body: widget.body,
-      bottomNavigationBar: FABBottomAppBar(
+      bottomNavigationBar: AppBarWithFAB(
         color: Colors.grey,
         selectedColor: Colors.red,
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: (value) => _selectedTab(context, value),
         items: [
-          FABBottomAppBarItem(iconData: Icons.today, text: 'Agenda'),
-          FABBottomAppBarItem(iconData: Icons.local_play, text: 'Assunto'),
-          FABBottomAppBarItem(iconData: Icons.account_box, text: 'Conta'),
-          FABBottomAppBarItem(iconData: Icons.exit_to_app, text: 'Sair'),
+          AppBarItem(iconData: Icons.today, text: 'Agenda'),
+          AppBarItem(iconData: Icons.local_play, text: 'Assunto'),
+          AppBarItem(iconData: Icons.account_box, text: 'Conta'),
+          AppBarItem(iconData: Icons.exit_to_app, text: 'Sair'),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -68,13 +68,13 @@ class _MainAppBarState extends State<MainAppBar> with TickerProviderStateMixin {
 
   void _selectedTab(context, index) {
     switch(index){
-      case 0: push(context, UserInfo(), replace: true);
+      case 0: pushReplacement(context, UserInfo());
         break;
-      case 1: push(context, UserInfo(), replace: true);
+      case 1: pushReplacement(context, UserInfo());
         break;
-      case 2: push(context, UserInfo(), replace: true);
+      case 2: pushReplacement(context, UserInfo());
         break;
-      case 3: push(context, UserInfo(), replace: true);
+      case 3: pushReplacement(context, UserInfo());
         break;
     }
   }

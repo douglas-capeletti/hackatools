@@ -1,7 +1,7 @@
-import 'package:hackatools/database/entities/usuario.dart';
-import 'package:hackatools/pages/login/login_page.dart';
-import 'package:hackatools/utils/nav.dart';
 import 'package:flutter/material.dart';
+import 'package:hackatools/database/entities/usuario.dart';
+import 'package:hackatools/login/login_page.dart';
+import 'package:hackatools/utils/nav.dart';
 
 class UserInfo extends StatelessWidget {
   UserAccountsDrawerHeader _header(Usuario user) {
@@ -61,6 +61,6 @@ class UserInfo extends StatelessWidget {
   _onClickLogout(BuildContext context) {
     Usuario.clear();
     Navigator.pop(context);
-    push(context, LoginPage(), replace: true);
+    pushReplacement(context, LoginPage());
   }
 }

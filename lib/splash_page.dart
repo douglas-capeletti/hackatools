@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:hackatools/app_bar.dart';
 import 'package:hackatools/database/entities/usuario.dart';
-import 'package:hackatools/pages/login/login_page.dart';
-import 'package:hackatools/pages/times/times_body.dart';
-import 'package:hackatools/pages/times/times_page.dart';
+import 'package:hackatools/times/times_body.dart';
 import 'package:hackatools/utils/db_helper.dart';
 import 'package:hackatools/utils/nav.dart';
-import 'package:flutter/material.dart';
-import 'package:hackatools/pages/app_bar.dart';
+
+import 'login/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -28,9 +28,9 @@ class _SplashPageState extends State<SplashPage> {
       print(user);
 
       if (user != null) {
-        push(context, MainAppBar(body: TimesBody()), replace: true);
+        pushReplacement(context, MainAppBar(body: TimesBody()));
       } else {
-        push(context, LoginPage(), replace: true);
+        pushReplacement(context, LoginPage());
       }
     });
   }

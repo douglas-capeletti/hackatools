@@ -1,9 +1,10 @@
 import 'dart:convert' as convert;
-import 'package:hackatools/api/mocks/mock.dart';
+
 import 'package:hackatools/database/entities/time.dart';
 import 'package:hackatools/utils/http_helper.dart' as http;
+import 'package:hackatools/utils/mocks/mock.dart';
 
-import 'api_response.dart';
+import '../utils/api_response.dart';
 
 class TimeApi {
   static Future<List<Time>> getTimes({bool mock = true}) async {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackatools/pages/splash_page.dart';
+import 'package:hackatools/splash_page.dart';
 
 void main() => runApp(MyApp());
 
