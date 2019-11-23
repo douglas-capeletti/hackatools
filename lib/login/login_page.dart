@@ -23,6 +23,9 @@ class _LoginPageState extends State<LoginPage> {
   final _input = LoginDTO();
   final _bloc = LoginBloc();
 
+  final String exampleUser = "clarisse_horta@acad.pucrs.br";
+  final String examplePass = "17809722";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                 validator: (text) {
                   return validateRequired(text, "Informe o login");
                 },
+                initialValue: exampleUser,
                 onSaved: (value) => this._input.login = value,
               ),
             ),
@@ -69,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                   return validateRequired(text, "Informe a senha");
                 },
                 onSaved: (value) => this._input.senha = value,
+                initialValue: examplePass,
               ),
             ),
             Container(
@@ -122,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
     if (response.isOk()) {
       pushReplacement(context, MainAppBar(body: TimesBody()));
     } else {
-      alert(context, "Filmes", response.msg);
+      alert(context, "Hackatools", response.msg);
     }
   }
 

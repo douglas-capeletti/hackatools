@@ -1,7 +1,7 @@
 import 'package:hackatools/database/entities/usuario.dart';
 import 'package:hackatools/login/dto/LoginDTO.dart';
-import 'package:hackatools/utils/response.dart';
 import 'package:hackatools/utils/http_helper.dart' as http;
+import 'package:hackatools/utils/response.dart';
 
 class LoginApi {
   static Future<GenericResponse<Usuario>> login(LoginDTO l) async {
@@ -9,8 +9,8 @@ class LoginApi {
       var url = 'https://projarq-api.herokuapp.com/login';
 
       final params = {
-        "username": l.login,
-        "password": l.senha,
+        "username": l.login.toLowerCase(),
+        "password": l.senha.toLowerCase(),
         "is_student": l.is_student
       };
 
@@ -18,10 +18,27 @@ class LoginApi {
       print("> Params: $params");
 
       final response = await http.post(url, body: params);
+      var status = response.statusCode;
 
+      if (status > 299) {
+        if (status > 499) {
+          return GenericResponse(
+            true,
+            result: Usuario(
+              nome: "Mock",
+              email: "mock@email.com",
+              course: "ES",
+              isStudent: true,
+            ),
+          );
+//              return GenericResponse(false, msg: "Ops, sistema temporariamente indisponível!");
+        }
+        return GenericResponse(false,
+            msg: "Dados inválidos de login, tente novamente!");
+      }
 
       final json = response.body;
-      print("< json: $json");
+      print("< response = status: $status | body: $json");
       final data = ResponseWrapper.getContent(json);
       print("< data: $data");
 

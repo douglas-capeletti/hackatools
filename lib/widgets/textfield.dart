@@ -7,9 +7,10 @@ class AppText extends StatelessWidget {
   final Function validator;
   final Function onSaved;
   final bool password;
+  final String initialValue;
 
   AppText(this.label, this.hint,
-      {this.validator, this.onSaved, this.password = false});
+      {this.validator, this.onSaved, this.password = false, this.initialValue = ""});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class AppText extends StatelessWidget {
       onSaved: this.onSaved,
       obscureText: password,
       keyboardType: TextInputType.text,
+      initialValue: this.initialValue,
       style: TextStyle(
         color: Colors.white,
         fontSize: 20,
