@@ -9,6 +9,7 @@ class AppBarItem {
 class AppBarWithFAB extends StatefulWidget {
   AppBarWithFAB({
     this.items,
+    this.selectedIndex = -1,
     this.centerItemText,
     this.height: 60.0,
     this.iconSize: 24.0,
@@ -20,7 +21,8 @@ class AppBarWithFAB extends StatefulWidget {
   }) {
     assert(this.items.length == 2 || this.items.length == 4);
   }
-  final List<AppBarItem> items;
+  final List<FABBottomAppBarItem> items;
+  int selectedIndex;
   final String centerItemText;
   final double height;
   final double iconSize;
@@ -34,13 +36,12 @@ class AppBarWithFAB extends StatefulWidget {
   State<StatefulWidget> createState() => AppBarWithFABState();
 }
 
-class AppBarWithFABState extends State<AppBarWithFAB> {
-  int _selectedIndex = 0;
+class FABBottomAppBarState extends State<FABBottomAppBar> {
 
   _updateIndex(int index) {
     widget.onTabSelected(index);
     setState(() {
-      _selectedIndex = index;
+      widget.selectedIndex = index;
     });
   }
 
@@ -90,7 +91,7 @@ class AppBarWithFABState extends State<AppBarWithFAB> {
     int index,
     ValueChanged<int> onPressed,
   }) {
-    Color color = _selectedIndex == index ? widget.selectedColor : widget.color;
+    Color color = widget.selectedIndex == index ? widget.selectedColor : widget.color;
     return Expanded(
       child: SizedBox(
         height: widget.height,

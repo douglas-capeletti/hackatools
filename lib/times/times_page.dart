@@ -17,16 +17,6 @@ class _TimesPageState extends State<TimesPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("HackaTools"),
-         actions: <Widget>[
-           IconButton(icon: Icon(Icons.exit_to_app), onPressed: () {
-             push(context, LoginPage());
-           },)
-         ],
-      ),
-      body: TimesBody(),
-    );
+    return MainAppBar(body: TimesBody());
   }
 }

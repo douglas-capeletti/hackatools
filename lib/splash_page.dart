@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
       print(user);
 
       if (user != null) {
-        pushReplacement(context, MainAppBar(body: TimesBody()));
+        pushReplacement(context, TimesPage());
       } else {
         pushReplacement(context, LoginPage());
       }
