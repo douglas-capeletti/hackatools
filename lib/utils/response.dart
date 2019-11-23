@@ -1,3 +1,5 @@
+import 'dart:convert' as convert;
+
 class GenericResponse<T> {
   bool status;
   String msg;
@@ -14,4 +16,12 @@ class GenericResponse<T> {
   String toString() {
     return 'Response{ok: $status, msg: $msg, result: $result}';
   }
+}
+
+class ResponseWrapper {
+
+  static Map<String, dynamic> getContent(String data){
+    return convert.json.decode(data)['data'] as Map<String, dynamic>;
+  }
+
 }

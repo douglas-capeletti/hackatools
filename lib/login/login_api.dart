@@ -1,19 +1,16 @@
-import 'dart:convert' as convert;
-
 import 'package:hackatools/database/entities/usuario.dart';
 import 'package:hackatools/login/dto/LoginDTO.dart';
 import 'package:hackatools/utils/response.dart';
-import 'package:http/http.dart' as http;
+import 'package:hackatools/utils/http_helper.dart' as http;
 
 class LoginApi {
   static Future<GenericResponse<Usuario>> login(LoginDTO l) async {
     try {
-      var url =
-          'https://hackatools-api.herokuapp.com/v1/usuarios/usuario/login';
+      var url = 'https://projarq-api.herokuapp.com/login';
 
       final params = {
-        "login": l.login,
-        "senha": l.senha,
+        "username": l.login,
+        "password": l.senha,
         "is_student": l.is_student
       };
 
@@ -22,11 +19,13 @@ class LoginApi {
 
       final response = await http.post(url, body: params);
 
-      final json = response.body;
-      final responseJson = convert.json.decode(json);
-      print("< json: $responseJson");
 
-      final responseObject = Usuario.fromJson(responseJson);
+      final json = response.body;
+      print("< json: $json");
+      final data = ResponseWrapper.getContent(json);
+      print("< data: $data");
+
+      final responseObject = Usuario.fromMap(data);
 
       return GenericResponse(true, result: responseObject);
     } catch (error, stacktrace) {

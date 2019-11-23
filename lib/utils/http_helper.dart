@@ -1,5 +1,5 @@
-import 'package:hackatools/database/entities/usuario.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 Future<http.Response> get(String url) async {
   final headers = await _headers();
@@ -9,6 +9,9 @@ Future<http.Response> get(String url) async {
 
 Future<http.Response> post(String url, {body}) async {
   final headers = await _headers();
+  if(body!=null){
+    body = convert.json.encode(body);
+  }
   var response = await http.post(url, body: body, headers: headers);
   return response;
 }
@@ -26,11 +29,9 @@ Future<http.Response> delete(String url) async {
 }
 
 Future<Map<String, String>> _headers() async {
-  Usuario user = await Usuario.get();
 
   Map<String, String> headers = {
-    "Content-Type": "application/json",
-    "Authorization": "Bearer ${user.token}"
+    "Content-Type": "application/json"
   };
   return headers;
 }

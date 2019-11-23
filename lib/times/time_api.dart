@@ -2,15 +2,11 @@ import 'dart:convert' as convert;
 
 import 'package:hackatools/database/entities/time.dart';
 import 'package:hackatools/utils/http_helper.dart' as http;
-import 'package:hackatools/utils/mocks/mock.dart';
 
 import '../utils/api_response.dart';
 
 class TimeApi {
-  static Future<List<Time>> getTimes({bool mock = true}) async {
-    if(mock){
-      return Mocks.MockGetTimes();
-    }
+  static Future<List<Time>> getTimes() async {
     var url =
         'https://hackatools-api.herokuapp.com/v1/times/';
 
