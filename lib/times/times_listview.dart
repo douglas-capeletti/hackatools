@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackatools/database/entities/time.dart';
-import 'package:hackatools/pages/detail/detail_page.dart';
-import 'package:hackatools/pages/detail/detail_body.dart';
+import 'package:hackatools/detail/detail_body.dart';
 import 'package:hackatools/utils/nav.dart';
 
 class TimesListView extends StatelessWidget {

@@ -28,16 +28,16 @@ class _MainAppBarState extends State<MainAppBar> with TickerProviderStateMixin {
           actions: _barActions(),
         ),
         body: widget.body,
-        bottomNavigationBar: FABBottomAppBar(
+        bottomNavigationBar: AppBarWithFAB(
           color: Colors.grey,
           selectedColor: Colors.red,
           notchedShape: CircularNotchedRectangle(),
           onTabSelected: _selectedTab,
           items: [
-            FABBottomAppBarItem(iconData: Icons.today, text: 'Agenda'),
-            FABBottomAppBarItem(iconData: Icons.local_play, text: 'Tema'),
-            FABBottomAppBarItem(iconData: Icons.accessibility, text: 'Ajuda'),
-            FABBottomAppBarItem(iconData: Icons.mail, text: 'Msgs'),
+            AppBarItem(iconData: Icons.today, text: 'Agenda'),
+            AppBarItem(iconData: Icons.local_play, text: 'Tema'),
+            AppBarItem(iconData: Icons.accessibility, text: 'Ajuda'),
+            AppBarItem(iconData: Icons.mail, text: 'Msgs'),
           ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -48,7 +48,7 @@ class _MainAppBarState extends State<MainAppBar> with TickerProviderStateMixin {
     return <Widget>[
       IconButton(
         icon: Icon(Icons.supervised_user_circle),
-        onPressed: () => push(context, UserInfo(), replace: false),
+        onPressed: () => push(context, UserInfo()),
       ),
     ];
   }

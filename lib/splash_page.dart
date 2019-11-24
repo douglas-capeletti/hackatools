@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hackatools/app_bar.dart';
 import 'package:hackatools/database/entities/usuario.dart';
-import 'package:hackatools/times/times_body.dart';
+import 'package:hackatools/times/times_page.dart';
 import 'package:hackatools/utils/db_helper.dart';
 import 'package:hackatools/utils/nav.dart';
 

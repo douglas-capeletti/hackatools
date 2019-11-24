@@ -1,11 +1,7 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:hackatools/app_bar.dart';
 import 'package:hackatools/database/entities/time.dart';
-import 'package:hackatools/pages/app_bar.dart';
-import 'package:hackatools/pages/detail/detail_page.dart';
-import 'package:hackatools/pages/times/times_body.dart';
-import 'package:hackatools/widgets/text.dart';
+import 'package:hackatools/detail/detail_page.dart';
 
 class DetailBody extends StatefulWidget {
   Time time;

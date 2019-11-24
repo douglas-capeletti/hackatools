@@ -21,7 +21,7 @@ class AppBarWithFAB extends StatefulWidget {
   }) {
     assert(this.items.length == 2 || this.items.length == 4);
   }
-  final List<FABBottomAppBarItem> items;
+  final List<AppBarItem> items;
   int selectedIndex;
   final String centerItemText;
   final double height;
@@ -36,7 +36,7 @@ class AppBarWithFAB extends StatefulWidget {
   State<StatefulWidget> createState() => AppBarWithFABState();
 }
 
-class FABBottomAppBarState extends State<FABBottomAppBar> {
+class AppBarWithFABState extends State<AppBarWithFAB> {
 
   _updateIndex(int index) {
     widget.onTabSelected(index);
