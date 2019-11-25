@@ -19,9 +19,11 @@ class GenericResponse<T> {
 }
 
 class ResponseWrapper {
-
-  static Map<String, dynamic> getContent(String data){
+  static Map<String, dynamic> getContent(String data) {
     return convert.json.decode(data)['data'] as Map<String, dynamic>;
   }
 
+  static List<dynamic> getContentList(String data) {
+    return convert.json.decode(data)['data'] as List<dynamic>;
+  }
 }

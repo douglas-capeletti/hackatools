@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hackatools/app_bar.dart';
-import 'package:hackatools/times/times_body.dart';
+import 'package:hackatools/components/app_base_page.dart';
+import 'package:hackatools/components/login/login_bloc.dart';
+import 'package:hackatools/components/team/team_body.dart';
+import 'package:hackatools/models/dto/LoginDTO.dart';
 import 'package:hackatools/utils/alerts.dart';
 import 'package:hackatools/utils/nav.dart';
 import 'package:hackatools/utils/validators.dart';
@@ -8,9 +10,6 @@ import 'package:hackatools/widgets/bg_login.dart';
 import 'package:hackatools/widgets/button.dart';
 import 'package:hackatools/widgets/link.dart';
 import 'package:hackatools/widgets/textfield.dart';
-
-import 'dto/LoginDTO.dart';
-import 'login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -22,6 +21,9 @@ class _LoginPageState extends State<LoginPage> {
 
   final _input = LoginDTO();
   final _bloc = LoginBloc();
+
+  final String exampleUser = "clarisse_horta@acad.pucrs.br";
+  final String examplePass = "17809722";
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                 validator: (text) {
                   return validateRequired(text, "Informe o login");
                 },
+                initialValue: exampleUser,
                 onSaved: (value) => this._input.login = value,
               ),
             ),
@@ -69,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                   return validateRequired(text, "Informe a senha");
                 },
                 onSaved: (value) => this._input.senha = value,
+                initialValue: examplePass,
               ),
             ),
             Container(
@@ -120,9 +124,9 @@ class _LoginPageState extends State<LoginPage> {
     final response = await _bloc.login(_input);
 
     if (response.isOk()) {
-      pushReplacement(context, MainAppBar(body: TimesBody()));
+      pushReplacement(context, AppBasePage(body: TimesBody()));
     } else {
-      alert(context, "Filmes", response.msg);
+      alert(context, "Hackatools", response.msg);
     }
   }
 

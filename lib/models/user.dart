@@ -1,51 +1,52 @@
-import 'package:hackatools/utils/prefs.dart';
 import 'dart:convert' as convert;
 
-class Usuario{
-  String nome;
+import 'package:hackatools/utils/prefs.dart';
+
+class User {
+  String name;
   String email;
   String course;
   bool isStudent;
 
-  Usuario({
-    this.nome,
-    this.email,
-    this.course,
-    this.isStudent,
+  User({
+    this.name = "",
+    this.email = "",
+    this.course = "",
+    this.isStudent = true,
   });
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is Usuario &&
+      (other is User &&
           runtimeType == other.runtimeType &&
-          nome == other.nome &&
+          name == other.name &&
           email == other.email &&
           course == other.course &&
           isStudent == other.isStudent);
 
   @override
   int get hashCode =>
-      nome.hashCode ^ email.hashCode ^ course.hashCode ^ isStudent.hashCode;
+      name.hashCode ^ email.hashCode ^ course.hashCode ^ isStudent.hashCode;
 
   @override
   String toString() {
     return 'Usuario{' +
-        ' nome: $nome,' +
+        ' name: $name,' +
         ' email: $email,' +
         ' course: $course,' +
         ' is_student: $isStudent,' +
         '}';
   }
 
-  Usuario copyWith({
+  User copyWith({
     String nome,
     String email,
     String course,
     String isStudent,
   }) {
-    return new Usuario(
-      nome: nome ?? this.nome,
+    return new User(
+      name: nome ?? this.name,
       email: email ?? this.email,
       course: course ?? this.course,
       isStudent: isStudent ?? this.isStudent,
@@ -54,16 +55,16 @@ class Usuario{
 
   Map<String, dynamic> toMap() {
     return {
-      'nome': this.nome,
+      'name': this.name,
       'email': this.email,
       'course': this.course,
       'is_student': this.isStudent,
     };
   }
 
-  factory Usuario.fromMap(Map<String, dynamic> map) {
-    return new Usuario(
-      nome: map['nome'] as String,
+  factory User.fromMap(Map<String, dynamic> map) {
+    return new User(
+      name: map['name'] as String,
       email: map['email'] as String,
       course: map['course'] as String,
       isStudent: map['is_student'] as bool,
@@ -82,13 +83,13 @@ class Usuario{
     Prefs.setString("user.prefs", json);
   }
 
-  static Future<Usuario> get() async {
+  static Future<User> get() async {
     String json = await Prefs.getString("user.prefs");
-    if(json.isEmpty) {
+    if (json.isEmpty) {
       return null;
     }
     Map map = convert.json.decode(json);
-    Usuario user = Usuario.fromMap(map);
+    User user = User.fromMap(map);
     return user;
   }
 
