@@ -1,17 +1,17 @@
-import 'package:hackatools/database/entities/usuario.dart';
-import 'package:hackatools/login/dto/LoginDTO.dart';
+import 'package:hackatools/models/dto/LoginDTO.dart';
+import 'package:hackatools/models/user.dart';
 import 'package:hackatools/utils/http_helper.dart' as http;
 import 'package:hackatools/utils/response.dart';
 
 class LoginApi {
-  static Future<GenericResponse<Usuario>> login(LoginDTO l) async {
+  static Future<GenericResponse<User>> login(LoginDTO dto) async {
     try {
       var url = 'https://projarq-api.herokuapp.com/login';
 
       final params = {
-        "username": l.login.toLowerCase(),
-        "password": l.senha.toLowerCase(),
-        "is_student": l.is_student
+        "username": dto.login.toLowerCase(),
+        "password": dto.senha.toLowerCase(),
+        "is_student": dto.is_student
       };
 
       print("> Login POST: $url");
@@ -22,15 +22,7 @@ class LoginApi {
 
       if (status > 299) {
         if (status > 499) {
-          return GenericResponse(
-            true,
-            result: Usuario(
-              nome: "Mock",
-              email: "mock@email.com",
-              course: "ES",
-              isStudent: true,
-            ),
-          );
+          return mockResponse();
 //              return GenericResponse(false, msg: "Ops, sistema temporariamente indisponível!");
         }
         return GenericResponse(false,
@@ -42,12 +34,25 @@ class LoginApi {
       final data = ResponseWrapper.getContent(json);
       print("< data: $data");
 
-      final responseObject = Usuario.fromMap(data);
+      final responseObject = User.fromMap(data);
 
       return GenericResponse(true, result: responseObject);
     } catch (error, stacktrace) {
       print("Login error: $error - $stacktrace");
       return GenericResponse(false, msg: "Não foi possível fazer o login");
     }
+  }
+
+  static GenericResponse<User> mockResponse() {
+    print("----->>>>> Logged with mock user");
+    return GenericResponse(
+      true,
+      result: User(
+        name: "Mock",
+        email: "mock@email.com",
+        course: "ES",
+        isStudent: true,
+      ),
+    );
   }
 }

@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-class AppBarItem {
-  AppBarItem({this.iconData, this.text});
-  IconData iconData;
-  String text;
-}
-
 class AppBarWithFAB extends StatefulWidget {
   AppBarWithFAB({
     this.items,
@@ -21,6 +15,7 @@ class AppBarWithFAB extends StatefulWidget {
   }) {
     assert(this.items.length == 2 || this.items.length == 4);
   }
+
   final List<AppBarItem> items;
   int selectedIndex;
   final String centerItemText;
@@ -37,7 +32,6 @@ class AppBarWithFAB extends StatefulWidget {
 }
 
 class AppBarWithFABState extends State<AppBarWithFAB> {
-
   _updateIndex(int index) {
     widget.onTabSelected(index);
     setState(() {
@@ -91,7 +85,8 @@ class AppBarWithFABState extends State<AppBarWithFAB> {
     int index,
     ValueChanged<int> onPressed,
   }) {
-    Color color = widget.selectedIndex == index ? widget.selectedColor : widget.color;
+    Color color =
+        widget.selectedIndex == index ? widget.selectedColor : widget.color;
     return Expanded(
       child: SizedBox(
         height: widget.height,
@@ -115,4 +110,11 @@ class AppBarWithFABState extends State<AppBarWithFAB> {
       ),
     );
   }
+}
+
+class AppBarItem {
+  IconData iconData;
+  String text;
+
+  AppBarItem({this.iconData, this.text});
 }

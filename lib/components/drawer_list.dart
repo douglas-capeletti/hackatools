@@ -1,39 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:hackatools/database/entities/usuario.dart';
-import 'package:hackatools/login/login_page.dart';
+import 'package:hackatools/components/login/login_page.dart';
+import 'package:hackatools/models/user.dart';
 import 'package:hackatools/utils/nav.dart';
 
-class UserInfo extends StatelessWidget {
-  UserAccountsDrawerHeader _header(Usuario user) {
+class DrawerList extends StatelessWidget {
+  UserAccountsDrawerHeader _header(User user) {
     return UserAccountsDrawerHeader(
-      accountName: Text(user.nome),
+      accountName: Text(user.name),
       accountEmail: Text(user.email),
       currentAccountPicture: CircleAvatar(
-        child: Image.asset(
-          "assets/images/user.png",
-          height: 150,
-        ),
+        child: Image.asset("assets/images/camera.png"),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    
-    Future<Usuario> future = Usuario.get();
-    
-    return
-      Drawer(
+    Future<User> future = User.get();
+
+    return SafeArea(
+      child: Drawer(
         child: ListView(
           children: <Widget>[
-            FutureBuilder<Usuario>(
-              future: future, builder: (context, snapshot) {
-
-                Usuario user = snapshot.data;
+            FutureBuilder<User>(
+              future: future,
+              builder: (context, snapshot) {
+                User user = snapshot.data;
 
                 return user != null ? _header(user) : Container();
-            },
-
+              },
             ),
             ListTile(
               leading: Icon(Icons.star),
@@ -63,11 +58,12 @@ class UserInfo extends StatelessWidget {
             )
           ],
         ),
+      ),
     );
   }
 
   _onClickLogout(BuildContext context) {
-    Usuario.clear();
+    User.clear();
     Navigator.pop(context);
     pushReplacement(context, LoginPage());
   }

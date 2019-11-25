@@ -7,6 +7,7 @@ class SimpleBloc<T> extends BlocBase {
 
   // stream
   final _controller = BehaviorSubject<T>();
+
   get stream => _controller.stream;
 
   get add => _controller.sink.add;
@@ -16,10 +17,7 @@ class SimpleBloc<T> extends BlocBase {
   @override
   void dispose() {
     super.dispose();
-
     _controller.close();
-
     progress.close();
   }
-
 }

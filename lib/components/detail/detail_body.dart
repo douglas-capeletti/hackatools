@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hackatools/app_bar.dart';
-import 'package:hackatools/database/entities/time.dart';
-import 'package:hackatools/detail/detail_page.dart';
+import 'package:hackatools/components/app_base_page.dart';
+import 'package:hackatools/components/detail/detail_page.dart';
+import 'package:hackatools/models/team.dart';
 
 class DetailBody extends StatefulWidget {
-  Time time;
+  Team time;
 
   DetailBody(this.time);
 
@@ -13,9 +13,8 @@ class DetailBody extends StatefulWidget {
 }
 
 class _DetailBodyState extends State<DetailBody> {
-
   @override
   Widget build(BuildContext context) {
-    return MainAppBar(body: DetailPage(widget.time), title: widget.time.nome);
+    return AppBasePage(body: DetailPage(widget.time), title: widget.time.name);
   }
 }

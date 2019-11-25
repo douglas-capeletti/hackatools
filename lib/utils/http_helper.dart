@@ -1,5 +1,6 @@
-import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+
+import 'package:http/http.dart' as http;
 
 Future<http.Response> get(String url) async {
   final headers = await _headers();
@@ -9,7 +10,7 @@ Future<http.Response> get(String url) async {
 
 Future<http.Response> post(String url, {body}) async {
   final headers = await _headers();
-  if(body!=null){
+  if (body != null) {
     body = convert.json.encode(body);
   }
   var response = await http.post(url, body: body, headers: headers);
@@ -29,9 +30,6 @@ Future<http.Response> delete(String url) async {
 }
 
 Future<Map<String, String>> _headers() async {
-
-  Map<String, String> headers = {
-    "Content-Type": "application/json"
-  };
+  Map<String, String> headers = {"Content-Type": "application/json"};
   return headers;
 }

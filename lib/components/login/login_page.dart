@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hackatools/app_bar.dart';
-import 'package:hackatools/times/times_body.dart';
+import 'package:hackatools/components/app_base_page.dart';
+import 'package:hackatools/components/login/login_bloc.dart';
+import 'package:hackatools/components/team/team_body.dart';
+import 'package:hackatools/models/dto/LoginDTO.dart';
 import 'package:hackatools/utils/alerts.dart';
 import 'package:hackatools/utils/nav.dart';
 import 'package:hackatools/utils/validators.dart';
@@ -8,9 +10,6 @@ import 'package:hackatools/widgets/bg_login.dart';
 import 'package:hackatools/widgets/button.dart';
 import 'package:hackatools/widgets/link.dart';
 import 'package:hackatools/widgets/textfield.dart';
-
-import 'dto/LoginDTO.dart';
-import 'login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -125,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
     final response = await _bloc.login(_input);
 
     if (response.isOk()) {
-      pushReplacement(context, MainAppBar(body: TimesBody()));
+      pushReplacement(context, AppBasePage(body: TimesBody()));
     } else {
       alert(context, "Hackatools", response.msg);
     }

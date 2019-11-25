@@ -1,11 +1,8 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:hackatools/database/entities/time.dart';
-import 'package:hackatools/widgets/text.dart';
+import 'package:hackatools/models/team.dart';
 
 class DetailPage extends StatefulWidget {
-  Time time;
+  Team time;
 
   DetailPage(this.time);
 
@@ -14,7 +11,6 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-
   @override
   void initState() {
     super.initState();
@@ -24,5 +20,4 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Container();
   }
-
 }

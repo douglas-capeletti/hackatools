@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hackatools/database/entities/time.dart';
-import 'package:hackatools/detail/detail_body.dart';
+import 'package:hackatools/components/detail/detail_body.dart';
+import 'package:hackatools/models/team.dart';
 import 'package:hackatools/utils/nav.dart';
 
 class TimesListView extends StatelessWidget {
-  List<Time> times;
+
+  Team mainTeam;
+  List<Team> times;
 
   TimesListView(this.times);
 
@@ -15,8 +17,8 @@ class TimesListView extends StatelessWidget {
       child: ListView.builder(
         itemCount: times.length,
         itemBuilder: (context, index) {
-          Time t = times[index];
-          var part = t.participantes.length ?? 0;
+          Team t = times[index];
+          var part = t.members.length ?? 0;
 
           return GestureDetector(
             onTap: () => push(context, DetailBody(t)),
@@ -28,10 +30,11 @@ class TimesListView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      t.nome,
+                      t.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontSize: 25, fontWeight : FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Participantes: $part",
@@ -46,5 +49,4 @@ class TimesListView extends StatelessWidget {
       ),
     );
   }
-
 }

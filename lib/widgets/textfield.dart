@@ -10,7 +10,10 @@ class AppText extends StatelessWidget {
   final String initialValue;
 
   AppText(this.label, this.hint,
-      {this.validator, this.onSaved, this.password = false, this.initialValue = ""});
+      {this.validator,
+      this.onSaved,
+      this.password = false,
+      this.initialValue = ""});
 
   @override
   Widget build(BuildContext context) {
