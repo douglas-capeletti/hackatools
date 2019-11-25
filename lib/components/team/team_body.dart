@@ -11,7 +11,7 @@ class TimesBody extends StatefulWidget {
 
 class _TimesBodyState extends State<TimesBody> with AutomaticKeepAliveClientMixin<TimesBody> {
 
-  TeamBloc get _bloc => BlocProvider.getBloc<TeamBloc>();
+  TeamBloc _bloc = TeamBloc();
 
   @override
   bool get wantKeepAlive => true;
@@ -53,4 +53,11 @@ class _TimesBodyState extends State<TimesBody> with AutomaticKeepAliveClientMixi
   Future<void> _onRefresh() {
     return _bloc.fetch();
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bloc.dispose();
+  }
+
 }

@@ -13,7 +13,7 @@ class TimesPage extends StatefulWidget {
 
 class _TimesPageState extends State<TimesPage> with SingleTickerProviderStateMixin<TimesPage> {
 
-  TeamBloc get _bloc => BlocProvider.getBloc<TeamBloc>();
+  TeamBloc _bloc = TeamBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +35,12 @@ class _TimesPageState extends State<TimesPage> with SingleTickerProviderStateMix
     var result = DialogWithTextInput(hint: "team name");
     print("$result");
     _bloc.add();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bloc.dispose();
   }
 
 }

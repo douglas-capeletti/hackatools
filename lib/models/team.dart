@@ -45,7 +45,7 @@ class Team {
   Map<String, dynamic> toMap() {
     return {
       'name': this.name,
-      'adminName': this.adminName,
+      'admin_name': this.adminName,
       'members': this.members,
     };
   }
@@ -53,7 +53,7 @@ class Team {
   factory Team.fromMap(Map<String, dynamic> map) {
     return new Team(
       name: map['name'] as String,
-      adminName: map['adminName'] as String,
+      adminName: map['admin_name'] as String,
       members: TeamMember.fromList(map['members'] as List<dynamic>),
     );
   }

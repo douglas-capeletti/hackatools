@@ -11,17 +11,18 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+
   @override
   void initState() {
     // Inicializar o banco de dados
-    Future futureA = DatabaseHelper.getInstance().db;
+//    Future futureA = DatabaseHelper.getInstance().db;
 
-    Future futureB = Future.delayed(Duration(milliseconds: 1500));
+//    Future futureB = Future.delayed(Duration(milliseconds: 1500));
 
     Future<User> futureC = User.get();
 
-    Future.wait([futureA, futureB, futureC]).then((List values) {
-      User user = values[2];
+    Future.wait([futureC]).then((List values) {
+      User user = values[0];
       print(user);
 
       if (user != null) {

@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:hackatools/components/detail/detail_body.dart';
+import 'package:hackatools/components/detail/detail_page.dart';
 import 'package:hackatools/models/team.dart';
 import 'package:hackatools/utils/nav.dart';
 
-class TimesListView extends StatelessWidget {
+class TimesListView extends StatefulWidget {
 
-  Team mainTeam;
   List<Team> times;
 
   TimesListView(this.times);
+
+  @override
+  _TimesListViewState createState() => _TimesListViewState();
+}
+
+class _TimesListViewState extends State<TimesListView> {
+  Team mainTeam;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(16),
       child: ListView.builder(
-        itemCount: times.length,
+        itemCount: widget.times.length,
         itemBuilder: (context, index) {
-          Team t = times[index];
+          Team t = widget.times[index];
           var part = t.members.length ?? 0;
 
           return GestureDetector(

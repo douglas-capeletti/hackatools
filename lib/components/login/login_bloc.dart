@@ -11,6 +11,7 @@ class LoginBloc extends SimpleBloc {
       if (response.isOk()) {
         response.result.save();
       }
+      print("Bloc Responded from logini");
       return response;
     } finally {
       progress.setProgress(false);
