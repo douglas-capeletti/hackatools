@@ -35,4 +35,11 @@ class TeamBloc extends SimpleBloc {
       },
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+
 }

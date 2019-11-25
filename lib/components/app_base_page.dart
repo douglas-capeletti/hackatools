@@ -10,8 +10,7 @@ class AppBasePage extends StatefulWidget {
   final AppBarWithFAB customBar;
 
   AppBasePage(
-      {Key key, this.title = "HackaTools", @required this.body, this.actions, this.customBar})
-      : super(key: key);
+      {Key key, this.title = "HackaTools", @required this.body, this.actions, this.customBar});
 
   @override
   _AppBasePageState createState() => new _AppBasePageState();
@@ -19,14 +18,11 @@ class AppBasePage extends StatefulWidget {
 
 class _AppBasePageState extends State<AppBasePage> {
 
-  bool mockData = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-        actions: _barActions(),
+        title: Text(widget.title)
       ),
       drawer: DrawerList(),
       body: widget.body,
@@ -49,17 +45,6 @@ class _AppBasePageState extends State<AppBasePage> {
           AppBarItem(iconData: Icons.mail, text: 'Msgs'),
         ],
       );
-  }
-
-  _barActions() {
-    return <Widget>[
-      IconButton(
-          icon: Icon(Icons.bug_report),
-          onPressed: () => () {
-                mockData = !mockData;
-                alert(context, "Mock Status: $mockData");
-              }),
-    ];
   }
 
   _selectedTab(index) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackatools/components/app_base_page.dart';
 import 'package:hackatools/components/login/login_bloc.dart';
 import 'package:hackatools/components/team/team_body.dart';
+import 'package:hackatools/components/team/team_page.dart';
 import 'package:hackatools/models/dto/LoginDTO.dart';
 import 'package:hackatools/utils/alerts.dart';
 import 'package:hackatools/utils/nav.dart';
@@ -124,7 +125,8 @@ class _LoginPageState extends State<LoginPage> {
     final response = await _bloc.login(_input);
 
     if (response.isOk()) {
-      pushReplacement(context, AppBasePage(body: TimesBody()));
+      print("Redirect to TimeBody");
+      pushReplacement(context, TimesPage());
     } else {
       alert(context, "Hackatools", response.msg);
     }
